@@ -55,3 +55,50 @@ class _StackCharactersState extends State<StackCharacters> {
     return stackContent;
   }
 }
+
+/* Using a for-in loop
+
+class _StackCharactersState extends State<StackCharacters> {
+  void refreshStack() {
+    setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final characters = '''故人西辞黄鹤楼，烟花三月下扬州。
+    孤帆远影碧空尽，唯见长江天际流。'''
+        .split('');
+    final random = Random();
+    final topMax = 600.0;
+    final leftMax = 400.0;
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Stack of Characters"),
+      ),
+      body: Stack(
+        children: <Widget>[
+          Container(color: Colors.amber.shade50),
+          for (var char in characters)
+            Positioned(
+              child: Opacity(
+                opacity: random.nextDouble() * 1.0,
+                child: Text(
+                  char,
+                  style: TextStyle(fontSize: (0.3 + random.nextDouble()) * 96),
+                ),
+              ),
+              top: random.nextDouble() * topMax,
+              left: random.nextDouble() * leftMax),
+            ),
+          // I kind of miss an 'end-for' here.
+        ]
+      ),
+      floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.refresh), onPressed: refreshStack),
+    );
+  }
+}
+
+*/
+
