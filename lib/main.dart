@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ui_as_code_study/stack_characters.dart';
+import 'stack_characters.dart';
 
 void main() => runApp(MyApp());
 
