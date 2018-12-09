@@ -111,7 +111,7 @@ class _StackCharactersState extends State<StackCharacters> {
   }
 }
 
-*/
+ */
 
 /* Using a while loop
 
@@ -158,4 +158,20 @@ class _StackCharactersState extends State<StackCharacters> {
   }
 }
 
-*/
+ */
+
+/* Using `if` in the argument list
+
+    List<Widget> stackContent = [
+      Container(
+        color: Colors.amber.shade50,
+        if(backgroundImage)
+          child: Image.asset(
+            "images/paper.jpeg",
+            fit: BoxFit.cover,
+            height: double.infinity,
+          )
+      ),
+    ];
+
+ */
