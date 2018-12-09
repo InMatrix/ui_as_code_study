@@ -35,8 +35,19 @@ class _StackCharactersState extends State<StackCharacters> {
     final random = Random();
     final topMax = 600.0;
     final leftMax = 400.0;
+    final backgroundImage = random.nextBool();
+
     List<Widget> stackContent = [
-      Container(color: Colors.amber.shade50),
+      Container(
+        color: Colors.amber.shade50,
+        child: backgroundImage
+            ? Image.asset(
+                "images/paper.jpeg",
+                fit: BoxFit.cover,
+                height: double.infinity,
+              )
+            : null,
+      ),
     ];
     for (var char in characters) {
       var top = random.nextDouble() * topMax;
@@ -148,4 +159,3 @@ class _StackCharactersState extends State<StackCharacters> {
 }
 
 */
-
