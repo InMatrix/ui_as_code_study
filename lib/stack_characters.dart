@@ -10,6 +10,8 @@ class StackCharacters extends StatefulWidget {
 }
 
 class _StackCharactersState extends State<StackCharacters> {
+  final random = Random();
+
   void refreshStack() {
     setState(() {});
   }
@@ -17,9 +19,6 @@ class _StackCharactersState extends State<StackCharacters> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Stack of Characters"),
-      ),
       body: Stack(
         children: generateStackContent(),
       ),
@@ -32,11 +31,8 @@ class _StackCharactersState extends State<StackCharacters> {
     final characters = '''故人西辞黄鹤楼，烟花三月下扬州。
     孤帆远影碧空尽，唯见长江天际流。'''
         .split('');
-    final random = Random();
-    final topMax = 600.0;
-    final leftMax = 400.0;
-    final backgroundImage = random.nextBool();
 
+    final backgroundImage = random.nextBool();
     List<Widget> stackContent = [
       Container(
         color: Colors.amber.shade50,
@@ -50,18 +46,44 @@ class _StackCharactersState extends State<StackCharacters> {
       ),
     ];
     for (var char in characters) {
-      var top = random.nextDouble() * topMax;
-      var left = random.nextDouble() * leftMax;
       stackContent.add(Positioned(
-          child: Opacity(
-            opacity: random.nextDouble() * 1.0,
-            child: Text(
-              char,
-              style: TextStyle(fontSize: (0.3 + random.nextDouble()) * 96),
-            ),
+        child: Opacity(
+          opacity: random.nextDouble() * 1.0,
+          child: Text(
+            char,
+            style: TextStyle(fontSize: (0.3 + random.nextDouble()) * 96),
           ),
-          top: top,
-          left: left));
+        ),
+        top: random.nextDouble() * MediaQuery.of(context).size.height,
+        left: random.nextDouble() * MediaQuery.of(context).size.width,
+      ));
+    }
+
+    // Add two Flutter Logs when there is no background image.
+    if (!backgroundImage) {
+      stackContent.add(
+        Positioned(
+          child: Opacity(
+              opacity: 0.5,
+              child: FlutterLogo(
+                size: 100,
+              )),
+          top: MediaQuery.of(context).size.height / 2 - 50,
+          left: MediaQuery.of(context).size.width / 2 - 50,
+        ),
+      );
+      stackContent.add(
+        Positioned(
+          child: Opacity(
+              opacity: 0.5,
+              child: FlutterLogo(
+                style: FlutterLogoStyle.horizontal,
+                size: 80,
+              )),
+          bottom: 10,
+          left: 10,
+        ),
+      );
     }
     return stackContent;
   }
@@ -80,8 +102,6 @@ class _StackCharactersState extends State<StackCharacters> {
     孤帆远影碧空尽，唯见长江天际流。'''
         .split('');
     final random = Random();
-    final topMax = 600.0;
-    final leftMax = 400.0;
 
     return Scaffold(
       appBar: AppBar(
@@ -99,10 +119,34 @@ class _StackCharactersState extends State<StackCharacters> {
                   style: TextStyle(fontSize: (0.3 + random.nextDouble()) * 96),
                 ),
               ),
-              top: random.nextDouble() * topMax,
-              left: random.nextDouble() * leftMax),
+              top: random.nextDouble() * MediaQuery.of(context).size.height,
+              left: random.nextDouble() * MediaQuery.of(context).size.width,
             ),
           // I kind of miss an 'end-for' here.
+
+          // Add two Flutter Logs when there is no background image
+          if (!backgroundImage) ...[
+            Positioned(
+              child: Opacity(
+                  opacity: 0.5,
+                  child: FlutterLogo(
+                    size: 100,
+                  )),
+              top: MediaQuery.of(context).size.height / 2 - 50,
+              left: MediaQuery.of(context).size.width / 2 - 50,
+            ),
+            Positioned(
+              child: Opacity(
+                  opacity: 0.5,
+                  child: FlutterLogo(
+                    style: FlutterLogoStyle.horizontal,
+                    size: 80,
+                  )),
+              bottom: 10,
+              left: 10,
+            ),
+          ]
+          // end if
         ]
       ),
       floatingActionButton: FloatingActionButton(
@@ -115,19 +159,12 @@ class _StackCharactersState extends State<StackCharacters> {
 
 /* Using a while loop
 
-class _StackCharactersState extends State<StackCharacters> {
-  void refreshStack() {
-    setState(() {});
-  }
 
   @override
   Widget build(BuildContext context) {
     final characters = '''故人西辞黄鹤楼，烟花三月下扬州。
     孤帆远影碧空尽，唯见长江天际流。'''
         .split('');
-    final random = Random();
-    final topMax = 600.0;
-    final leftMax = 400.0;
     var index = 0;
 
     return Scaffold(
@@ -156,7 +193,7 @@ class _StackCharactersState extends State<StackCharacters> {
           child: Icon(Icons.refresh), onPressed: refreshStack),
     );
   }
-}
+
 
  */
 
