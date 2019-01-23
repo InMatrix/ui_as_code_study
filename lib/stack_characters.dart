@@ -32,11 +32,11 @@ class _StackCharactersState extends State<StackCharacters> {
     孤帆远影碧空尽，唯见长江天际流。'''
         .split('');
 
-    final backgroundImage = random.nextBool();
+    final hasBackgroundImage = random.nextBool();
     List<Widget> stackContent = [
       Container(
         color: Colors.amber.shade50,
-        child: backgroundImage
+        child: hasBackgroundImage
             ? Image.asset(
                 "images/paper.jpeg",
                 fit: BoxFit.cover,
@@ -60,14 +60,15 @@ class _StackCharactersState extends State<StackCharacters> {
     }
 
     // Add two Flutter Logs when there is no background image.
-    if (!backgroundImage) {
+    if (!hasBackgroundImage) {
       stackContent.add(
         Positioned(
           child: Opacity(
-              opacity: 0.5,
-              child: FlutterLogo(
-                size: 100,
-              )),
+            opacity: 0.5,
+            child: FlutterLogo(
+              size: 100,
+            ),
+          ),
           top: MediaQuery.of(context).size.height / 2 - 50,
           left: MediaQuery.of(context).size.width / 2 - 50,
         ),
@@ -75,11 +76,12 @@ class _StackCharactersState extends State<StackCharacters> {
       stackContent.add(
         Positioned(
           child: Opacity(
-              opacity: 0.5,
-              child: FlutterLogo(
-                style: FlutterLogoStyle.horizontal,
-                size: 80,
-              )),
+            opacity: 0.5,
+            child: FlutterLogo(
+              style: FlutterLogoStyle.horizontal,
+              size: 80,
+            ),
+          ),
           bottom: 10,
           left: 10,
         ),
@@ -125,13 +127,13 @@ class _StackCharactersState extends State<StackCharacters> {
           // I kind of miss an 'end-for' here.
 
           // Add two Flutter Logs when there is no background image
-          if (!backgroundImage) ...[
+          if (!hasBackgroundImage) ...[
             Positioned(
               child: Opacity(
                   opacity: 0.5,
                   child: FlutterLogo(
                     size: 100,
-                  )),
+                  ),),
               top: MediaQuery.of(context).size.height / 2 - 50,
               left: MediaQuery.of(context).size.width / 2 - 50,
             ),
@@ -141,7 +143,7 @@ class _StackCharactersState extends State<StackCharacters> {
                   child: FlutterLogo(
                     style: FlutterLogoStyle.horizontal,
                     size: 80,
-                  )),
+                  ),),
               bottom: 10,
               left: 10,
             ),
@@ -202,7 +204,7 @@ class _StackCharactersState extends State<StackCharacters> {
     List<Widget> stackContent = [
       Container(
         color: Colors.amber.shade50,
-        if(backgroundImage)
+        if(hasBackgroundImage)
           child: Image.asset(
             "images/paper.jpeg",
             fit: BoxFit.cover,
