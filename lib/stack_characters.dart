@@ -51,7 +51,7 @@ class _StackCharactersState extends State<StackCharacters> {
       ));
     }
 
-    // Add two Flutter Logs when there is no background image.
+    // Add two Flutter Logos randomly.
     if (random.nextBool()) {
       stackContent.add(
         Positioned(
