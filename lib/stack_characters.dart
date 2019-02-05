@@ -32,7 +32,6 @@ class _StackCharactersState extends State<StackCharacters> {
     孤帆远影碧空尽，唯见长江天际流。'''
         .split('');
 
-    final hasBackgroundImage = random.nextBool();
     List<Widget> stackContent = [
       Container(
         color: Colors.amber.shade50,
@@ -53,7 +52,7 @@ class _StackCharactersState extends State<StackCharacters> {
     }
 
     // Add two Flutter Logs when there is no background image.
-    if (!hasBackgroundImage) {
+    if (random.nextBool()) {
       stackContent.add(
         Positioned(
           child: Opacity(
