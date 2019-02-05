@@ -36,13 +36,6 @@ class _StackCharactersState extends State<StackCharacters> {
     List<Widget> stackContent = [
       Container(
         color: Colors.amber.shade50,
-        child: hasBackgroundImage
-            ? Image.asset(
-                "images/paper.jpeg",
-                fit: BoxFit.cover,
-                height: double.infinity,
-              )
-            : null,
       ),
     ];
     for (var char in characters) {
